@@ -1,0 +1,133 @@
+#preguntas_frecuentes .parallax {
+    background-image: url(/assets/img/propiedades.png);
+}
+
+#preguntas_frecuentes .main-questions-container {
+    max-width: 1000px;
+    width: 90%;
+    margin: 40px auto;
+}
+
+#preguntas_frecuentes .categorias {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 60px;
+}
+
+#preguntas_frecuentes .categoria {
+    cursor: pointer;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    background: #fff;
+    font-weight: 700;
+    color: var(--gris-claro);
+    border: 2px solid transparent;
+    transition: .3s ease all;
+}
+
+#preguntas_frecuentes .categoria:hover {
+    box-shadow: var(--sombra);
+    color: #000;
+}
+
+#preguntas_frecuentes .categoria:hover path {
+    fill: var(--primario);
+}
+
+#preguntas_frecuentes .categoria i {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+
+#preguntas_frecuentes .categoria path {
+    fill: var(--gris-claro);
+    transition: .3s ease all;
+}
+
+#preguntas_frecuentes .categoria.activa {
+    border: 2px solid var(--primario);
+    color: #E2BB7D;
+}
+
+#preguntas_frecuentes .categoria.activa path {
+    fill: var(--primario);
+}
+
+#preguntas_frecuentes .contenedor-preguntas {
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 40px;
+}
+
+#preguntas_frecuentes .categoria {
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 10px;
+    font-weight: 700;
+    color: var(--gris-claro);
+    transition: .3s ease all;
+}
+
+#preguntas_frecuentes .contenedor-preguntas.activo {
+    display: grid;
+}
+
+#preguntas_frecuentes .contenedor-pregunta {
+    background: #fff;
+    padding: 40px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: .3s ease all;
+    cursor: pointer;
+}
+
+#preguntas_frecuentes .contenedor-pregunta:hover {
+    box-shadow: var(--sombra);
+}
+
+#preguntas_frecuentes .contenedor-pregunta.activa {
+    border: 2px solid var(--primario);
+}
+
+#preguntas_frecuentes .pregunta {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#preguntas_frecuentes .pregunta i {
+    width: 14px;
+}
+
+#preguntas_frecuentes .respuesta {
+    color: #808080;
+    line-height: 30px;
+    max-height: 0;
+    opacity: 0;
+    transition: .3s ease-in-out;
+}
+
+#preguntas_frecuentes .contenedor-pregunta.activa .respuesta {
+    opacity: 1;
+    margin-top: 20px;
+}
+
+#preguntas_frecuentes .contenedor-pregunta.activa i {
+    transition: transform .3s ease-in-out;
+    transform: rotate(45deg);
+}
+
+
+@media (max-width: 768px) {
+    #preguntas_frecuentes .categoria {
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+}

@@ -1,0 +1,49 @@
+<div id="preguntas_frecuentes">
+    <div class="parallax">
+        <div class="parallax-cuerpo">
+            <div id="titulo" class="container">
+                <div class="row">
+                    <div class="col-12 text-white">
+                        <h1>Preguntas Frecuentes</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row text-center">
+
+            <!-- Categoría -->
+            <div class="col-12 mb-5">
+                <div class="row">
+                    <div class="col-lg-3 mb-3" *ngFor="let categoria of categorias"
+                        (click)="seleccionarCategoria(categoria.id)">
+                        <div class="categoria" [class.activa]="categoriaSeleccionada === categoria.id">
+                            <i [ngClass]="categoria.icono"></i>
+                            <p>{{ categoria.titulo }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preguntas -->
+            <div class="col-12 preguntas mb-5">
+                <div class="contenedor-preguntas" *ngFor="let categoria of categorias"
+                    [class.activo]="categoria.id === categoriaSeleccionada">
+                    <div class="contenedor-pregunta" *ngFor="let pregunta of categoria.preguntas"
+                        (click)="togglePregunta(pregunta.pregunta)"
+                        [class.activa]="preguntaActiva === pregunta.pregunta">
+                        <p class="pregunta">
+                            {{ pregunta.pregunta }}
+                            <i class="fas fa-plus"></i>
+                        </p>
+                        <p class="respuesta" [style.maxHeight]="preguntaActiva === pregunta.pregunta ? '300px' : null">
+                            {{ pregunta.respuesta }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

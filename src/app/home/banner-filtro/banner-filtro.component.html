@@ -1,0 +1,42 @@
+<div class="container-fluid search-section mb-5">
+    <div class="container">
+        <div class="slogan-banner">
+            <h3>TU HOGAR, NUESTRA</h3>
+            <div class="title">
+                <div class="letter">S</div>
+                <div class="letter">A</div>
+                <div class="letter">T</div>
+                <div class="letter">I</div>
+                <div class="letter">S</div>
+                <div class="letter">F</div>
+                <div class="letter">A</div>
+                <div class="letter">C</div>
+                <div class="letter">I</div>
+                <div class="letter">Ó</div>
+                <div class="letter">N</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button [ngClass]="{ active: selectedButton === 'comprar' }" (click)="selectButton('comprar')">
+                Comprar
+            </button>
+            <button [ngClass]="{ active: selectedButton === 'alquilar' }" (click)="selectButton('alquilar')">
+                Alquilar
+            </button>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <select>
+                    <option>Casa</option>
+                    <option>Apartamento</option>
+                    <option>Habitación</option>
+                    <option>Oficina</option>
+                </select>
+                <input type="text" placeholder="Busca por ubicación" />
+                <button><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+    </div>
+</div>

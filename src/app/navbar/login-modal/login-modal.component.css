@@ -1,0 +1,155 @@
+/* Estilos para el formulario de inicio de sesión */
+.custom-login-form {
+    color: #000;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    overflow-y: auto;
+}
+
+.custom-form-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.custom-form-container h1 {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.custom-back-link {
+    display: inline-block;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.custom-back-link:hover {
+    color: #E2BB7D;
+    text-decoration: none;
+}
+
+.custom-form-container h3 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-description {
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+.custom-form-group {
+    margin-bottom: 25px;
+}
+
+.custom-form-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.custom-divider {
+    height: 1px;
+    background-color: #ddd;
+    margin: 25px 0;
+}
+
+.custom-continue-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    background-color: #E2BB7D;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: background-color 0.3s;
+}
+
+.custom-continue-btn:hover {
+    background-color: #d4a95c;
+}
+
+.custom-social-login {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.custom-social-login p {
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.custom-social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.custom-social-icons i {
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.custom-social-icons i:hover {
+    color: #E2BB7D;
+}
+
+.custom-register-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.custom-register-link a {
+    color: #000;
+    font-weight: bold;
+    text-decoration: underline;
+    transition: color 0.3s;
+}
+
+.custom-register-link a:hover {
+    color: #E2BB7D;
+}
+
+/* Estilos para el scroll */
+.custom-form-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-form-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.custom-form-container::-webkit-scrollbar-thumb {
+    background: #E2BB7D;
+    border-radius: 4px;
+}
+
+.custom-form-container::-webkit-scrollbar-thumb:hover {
+    background: #d4a95c;
+}

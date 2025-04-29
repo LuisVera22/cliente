@@ -1,0 +1,58 @@
+<main id="quienes_somos">
+    <div class="parallax">
+        <div class="parallax-cuerpo">
+            <div id="titulo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-white">
+                            <h1>Crear Cuenta</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="p-5 mb-5 border rounded shadow bg-white mx-auto" style="max-width: 600px;">
+            <h2 class="mb-4">Ingrese sus datos</h2>
+            <form>
+                <div class="form-group">
+                    <label for="dni_ruc">DNI o RUC</label>
+                    <input type="text" class="form-control" id="dni" name="dni_ruc" placeholder="Ingrese el DNI o RUC">
+                </div>
+    
+                <div class="form-group">
+                    <label for="nombres">Nombres</label>
+                    <input type="text" class="form-control" id="nombres" name="nombres" placeholder="Ingrese los nombres">
+                </div>
+    
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Ingrese los apellidos">
+                </div>
+    
+                <div class="form-group">
+                    <label for="numero">Número</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Ingrese su número">
+                </div>
+    
+                <div class="form-group">
+                    <label for="genero">Género</label>
+                    <select class="form-control shadow-sm" id="genero" name="genero">
+                        <option selected disabled>Seleccione una opción</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Femenino">Femenino</option>
+                    </select>
+                </div>
+    
+                <div class="form-group">
+                    <label for="fechaNacimiento">Fecha de Nacimiento</label>
+                    <input type="date" class="form-control" id="fechaNacimiento" name="fechaNacimiento">
+                </div>
+    
+                <button type="submit" class="btn btn-primary">Registrar</button>
+            </form>
+        </div>
+    </div>
+</main>

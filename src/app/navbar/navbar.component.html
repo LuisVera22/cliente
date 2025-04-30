@@ -1,8 +1,9 @@
-<header class="custom-header">
+<header class="custom-header" #header>
     <nav class="custom-navbar">
-        <button class="custom-navbar-toggler" id="navbarToggler">
+        <button class="custom-navbar-toggler" #navbarToggler>
             <i class="fas fa-bars"></i>
         </button>
+
         <div class="custom-logo">
             <div class="custom-title">
                 <div class="custom-letter">S</div>
@@ -14,32 +15,34 @@
         </div>
 
         <button id="login-btn" class="custom-btn-login" (click)="openModal()">
-            <i class="fas fa-user"></i>
-            Iniciar Sesión
+            <i class="fas fa-user"></i> Iniciar Sesión
         </button>
-        
+
         <!-- Modal -->
         <app-login-modal *ngIf="isModalVisible" (close)="closeModal()"></app-login-modal>
 
-        <div class="custom-navbar-collapse" id="navbarSupportedContent">
-            <button class="custom-close-btn" id="closeBtn"><i class="fas fa-times"></i></button>
-            <img src="/assets/img/hogar.png" alt="" height="60px">
-            <hr>
+        <div class="custom-navbar-collapse" #navbarCollapse id="navbarSupportedContent">
+            <button class="custom-close-btn" #closeBtn>
+                <i class="fas fa-times"></i>
+            </button>
+            <img src="/assets/img/hogar.png" alt="" height="60px" />
+            <hr />
             <ul class="custom-navbar-nav">
                 <li class="custom-nav-item custom-active">
                     <a class="custom-nav-link" routerLink="/" (click)="closeNavbar()">Inicio</a>
                 </li>
                 <li class="custom-nav-item">
-                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Alquilar</a>
+                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Publicar</a>
                 </li>
                 <li class="custom-nav-item">
-                    <a class="custom-nav-link" routerLink="/preguntas-frecuentes" (click)="closeNavbar()">Preguntas Frecuentes</a>
+                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Nuestro Blog</a>
                 </li>
                 <li class="custom-nav-item">
-                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Blog</a>
+                    <a class="custom-nav-link" routerLink="/preguntas-frecuentes" (click)="closeNavbar()">Preguntas
+                        Frecuentes</a>
                 </li>
                 <li class="custom-nav-item">
-                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Contactenos</a>
+                    <a class="custom-nav-link" routerLink="#" (click)="closeNavbar()">Contáctenos</a>
                 </li>
             </ul>
         </div>

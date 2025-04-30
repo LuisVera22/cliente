@@ -25,7 +25,7 @@
 }
 
 .title {
-    font-size: 90px;
+    font-size: 120px;
     font-weight: 600;
     margin-bottom: 15px;
     display: flex;
@@ -38,10 +38,10 @@
     display: flex;
     width: 100%;
     max-width: 300px;
-    height: 35px;
+    height: 49px;
     color: var(--button-color);
     margin: 1rem auto;
-    border-radius: 20px;
+    border-radius: 50px;
     overflow: hidden;
     border: 2px solid var(--button-background);
 }
@@ -51,7 +51,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 500;
     cursor: pointer;
     transition: all .25s ease-in-out;
     border: none;
@@ -90,15 +91,25 @@
 }
 
 .search-box {
-    width: 100%;
+    width: 90%;
+    min-height: 40px;
     display: flex;
     border-radius: 30px;
     overflow: hidden;
     box-shadow: 0 2px 10px rgba(0,0,0,0.2);
 }
 
-.search-box select,
+.search-box select {
+    max-width: 30%;
+    border: none;
+    padding: 15px 20px;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
 .search-box input {
+    max-width: 80%;
     border: none;
     padding: 15px 20px;
     outline: none;
@@ -115,7 +126,24 @@
 
 .search-box button {
     background-color: #E2BB7D;
+    max-width: 20%;
     border: none;
     padding: 0 25px;
     color: black;
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-box input {
+        max-width: 50%;
+    }
+
+    .slogan-banner h3 {
+        font-size: 45px;
+    }
+    
+    .title {
+        font-size: 85px;
+    }
 }

@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   styleUrl: './banner-filtro.component.css'
 })
 export class BannerFiltroComponent {
-  selectedButton: string = 'comprar';
+  selectedButton: string = 'social';
 
   selectButton(button: string): void {
     this.selectedButton = button;

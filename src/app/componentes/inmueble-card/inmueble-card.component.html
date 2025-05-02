@@ -1,0 +1,44 @@
+<div class="card mb-3 shadow bg-white rounded property-card">
+    <div class="position-relative property-image">
+        <img [src]="property.image" alt="Local comercial" class="card-img-top">
+        <span class="property-badge position-absolute">{{ property.status }}</span>
+        <span class="property-price position-absolute">{{ property.price }}</span>
+    </div>
+    <div class="card-body">
+        <h3 class="card-title">{{ property.title }}</h3>
+        <p class="card-text"><i class="fas fa-map-marker-alt"></i> {{ property.location }}</p>
+        <div class="row">
+            <div class="col-4">
+                <p class="card-text">
+                    <small class="property-feature">
+                        <i class="fas fa-ruler-combined"></i> {{ property.area }} m²
+                    </small>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="card-text">
+                    <small class="property-feature">
+                        <i class="fas fa-building"></i> {{ property.buildingArea }} m²
+                    </small>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="card-text">
+                    <small class="property-feature">
+                        <i class="fas fa-bed"></i> {{ property.bedrooms }} dorm.
+                    </small>
+                </p>
+            </div>
+            <div class="col-4">
+                <p class="card-text">
+                    <small class="property-feature">
+                        <i class="fas fa-bath"></i> {{ property.bathrooms }} baños
+                    </small>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-primary">Ver detalles</button>
+    </div>
+</div>

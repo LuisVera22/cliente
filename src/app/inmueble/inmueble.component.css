@@ -1,0 +1,393 @@
+
+#inmueble #app {
+    height: 100%;
+    display: flex;
+}
+
+#inmueble .geo-card {
+    top: -100px;
+    left: 15%;
+    transition: transform 0.3s cubic-bezier(0.74, -0.03, 0.05, 1.24);
+    width: 160px;
+    height: 95px;
+    will-change: transform;
+    transform-origin: 50% 100%;
+    transform: scale(0);
+    filter: blur(10px);
+    background: white;
+    border-radius: 18px;
+    box-shadow:
+        0 0 0 2px #dfcaa7,
+        1px 4px 5px 4px #ededed54;
+    padding: 2px;
+    animation-duration: 0.3s;
+    animation-delay: 0.1s;
+    animation-fill-mode: both;
+    overflow: hidden;
+}
+
+#inmueble #app:has(.hover-geo-card:hover)>.reference>.geo-card {
+    transform: scale(1);
+    animation-name: coolfadeIn;
+}
+
+#inmueble .geo-card:hover {
+    pointer-events: all;
+}
+
+#inmueble .bg-map {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 0;
+    /* background-image: place your image */
+    background-position: 15px -32px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#inmueble .elements {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#inmueble .details {
+    z-index: 1;
+    margin-bottom: -10%;
+    margin-top: -12%;
+    flex: 1 1 0;
+    background: #E2BB7D;
+    filter: blur(6px);
+}
+
+
+#inmueble .main-title {
+    font-size: 1.2rem;
+    color: #E2BB7D;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: baseline;
+    transition: ease-in-out 0.3s;
+}
+
+#inmueble .main-title:hover {
+    color: #d89733;
+    text-decoration: none;
+}
+
+#inmueble .icon-circle-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: #d9d9d980;
+    font-size: 24px;
+    animation: pulse 1.2s infinite;
+}
+
+#inmueble .second-title {
+    font-size: 0.9em;
+    color: #aea89f;
+    font-weight: 500;
+}
+
+#inmueble .inner-geo-card {
+    border-radius: calc(18px - 2%);
+    height: 100%;
+    width: 100%;
+    border: 2px solid #2d2d2d45;
+    background: #f1e6d6;
+    overflow: hidden;
+}
+
+#inmueble .blur-item {
+    left: 0;
+    top: 0;
+    min-width: 60px;
+    filter: blur(10px);
+    background: #f6f2eb;
+    z-index: -1;
+    height: 110%;
+}
+
+#inmueble .location {
+    background-color: #E2BB7D;
+    top: 24%;
+    z-index: 1000;
+    left: 60%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 7px #c1c1c180;
+    border: 5px solid white;
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        box-shadow:
+            0 0 0 0 rgba(72, 72, 72, 0.7),
+            0 0 8px 5px #d9d9d980;
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow:
+            0 0 0 10px rgba(72, 72, 72, 0),
+            0 0 8px 5px #d9d9d980;
+    }
+
+    100% {
+        transform: scale(0.95);
+        box-shadow:
+            0 0 0 0 rgba(72, 72, 72, 0),
+            0 0 8px 5px #d9d9d980;
+    }
+}
+
+@keyframes coolfadeIn {
+    0% {
+        filter: brightness(1) blur(10px);
+    }
+
+    10% {
+        filter: brightness(1) blur(20px);
+    }
+
+    100% {
+        filter: brightness(1) blur(0px);
+    }
+}
+
+@keyframes movingClouds {
+    from {
+        transform: translateX(-100px);
+    }
+
+    to {
+        transform: translateX(100px);
+    }
+}
+
+#inmueble .cloud {
+    z-index: 1;
+    position: absolute;
+    border-radius: 50%;
+    animation-name: movingClouds;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+#inmueble .cloud:nth-child(1) {
+    animation-duration: 45s;
+    height: 1em;
+    width: 1.4em;
+    top: 3.5em;
+    left: 50%;
+    filter: blur(0.125em) drop-shadow(0.438em 0.188em #ffffffae) drop-shadow(-0.625em 0.313em #ffffffae);
+    background: linear-gradient(to top right, #ffffffae, #ffffffae);
+    transition: 0.4s;
+}
+
+#inmueble .cloud:nth-child(2) {
+    animation-duration: 30s;
+    top: 0.325em;
+    right: -1em;
+    width: 4.075em;
+    height: 1.575em;
+    background: #ebebebdb;
+    filter: blur(0.425em) drop-shadow(-0.313em 0.812em #e0dfdfae) drop-shadow(-1.625em 0.812em #bbbbbbae) drop-shadow(-1em 0.063em #cfcfcfae);
+}
+
+#inmueble .cloud:nth-child(3) {
+    animation-duration: 60s;
+    top: 2.45em;
+    right: 4.938em;
+    width: 1.075em;
+    height: 0.575em;
+    background: #ffffff;
+    filter: blur(0.125em) drop-shadow(0.438em 0.188em #ffffffae) drop-shadow(-0.625em 0.313em #ffffffae);
+    transition: 0.8s;
+}
+
+#inmueble .cloud:nth-child(4) {
+    animation-duration: 40s;
+    top: 4.45em;
+    right: 4.938em;
+    width: 1.075em;
+    height: 0.375em;
+    background: #ffffff;
+    filter: blur(0.125em) drop-shadow(0.438em 0.188em #ffffffae) drop-shadow(-0.625em 0.313em #ffffffae);
+    transition: 0.8s;
+}
+
+#inmueble .photo-container {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+#inmueble .photo-cover {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+}
+
+#inmueble .photo-cover div {
+    border: none;
+}
+
+#inmueble .photo-cover div a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+#inmueble .photo-cover div a img:hover {
+    filter: brightness(70%);
+}
+
+
+#inmueble .photo-cover-1 {
+    grid-column: span 6 / span 6;
+    grid-row: span 4 / span 4;
+}
+
+#inmueble .photo-cover-2 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 7;
+}
+
+#inmueble .photo-cover-3 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 10;
+}
+
+#inmueble .photo-cover-4 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 7;
+    grid-row-start: 3;
+}
+
+#inmueble .photo-cover-5 {
+    grid-column: span 3 / span 3;
+    grid-row: span 2 / span 2;
+    grid-column-start: 10;
+    grid-row-start: 3;
+}
+
+#inmueble .input-field {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+#inmueble .input-field label {
+    position: absolute;
+    color: #666;
+    pointer-events: none;
+    background-color: transparent;
+    left: 15px;
+    transform: translateY(0.6rem);
+    transition: all 0.3s ease;
+}
+
+#inmueble .input-field input,
+#inmueble .input-field textarea {
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: solid 1px #e2bb7d;
+    letter-spacing: 1px;
+    width: 100%;
+}
+
+#inmueble .input-field textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+#inmueble .input-field input:focus,
+#inmueble .input-field textarea:focus,
+#inmueble .input-field input:valid,
+#inmueble .input-field textarea:valid {
+    outline: none;
+    border: solid 1px #E2BB7D;
+}
+
+#inmueble .input-field input:focus~label,
+#inmueble .input-field input:valid~label,
+#inmueble .input-field textarea:focus~label,
+#inmueble .input-field textarea:valid~label {
+    transform: translateY(-51%) translateX(-10px) scale(0.8);
+    background-color: #fff;
+    padding: 0px 5px;
+    color: #E2BB7D;
+    letter-spacing: 1px;
+    border: none;
+    border-radius: 100px;
+}
+
+/* End form contact */
+#inmueble .description {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#inmueble .btn-text-control {
+    color: #8d8d8d;
+    background: white;
+    border: none;
+}
+
+#inmueble #phone-number {
+    cursor: pointer;
+}
+
+#inmueble #phone-number:hover {
+    color: #E2BB7D;
+}
+
+#inmueble .whatsapp-link i {
+    background: #25d366;
+    color: #fff;
+    transition: ease-in-out 0.5s;
+    padding: 8px 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+}
+
+#inmueble .whatsapp-link i:hover {
+    border: 2px solid #25d366;
+    color: #25d366;
+    background: #fff;
+}
+
+.btn-telefono {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #inmueble .photo-cover>div:not(.photo-cover-1) {
+        display: none;
+    }
+
+    #inmueble .photo-cover-1 {
+        grid-column: span 12;
+        grid-row: span 4;
+    }
+}

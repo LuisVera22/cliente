@@ -1,0 +1,79 @@
+#nuestros-inmuebles .parallax {
+    background-image: url(/assets/img/propiedades.png);
+}
+
+.view-options {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+
+/* Sidebar de filtros */
+#nuestros-inmuebles .filter-group h5 {
+    font-size: 16px;
+    color: #333;
+    align-items: center;
+    gap: 10px;
+}
+
+#nuestros-inmuebles .filter-group h5 i {
+    color: #E2BB7D;
+}
+
+#nuestros-inmuebles .filter-list a {
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+#nuestros-inmuebles .filter-list a:hover {
+    color: #E2BB7D;
+}
+
+#nuestros-inmuebles .filter-list .count {
+    background: #f5f5f5;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+#nuestros-inmuebles .price-range {
+    margin-top: 15px;
+}
+
+#nuestros-inmuebles .price-range input {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.number_pro {
+    appearance: textfield;
+}
+
+/* Paginación */
+.pagination {
+    justify-content: center;
+}
+
+.pagination a {
+    color: #E2BB7D;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #E2BB7D;
+    border-radius: 5px;
+    margin: 0 5px;
+    transition: background-color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #E2BB7D;
+    color: white;
+}
+
+.pagination .active {
+    background-color: #E2BB7D;
+    color: white;
+    border: 1px solid #E2BB7D;
+}

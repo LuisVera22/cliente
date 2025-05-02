@@ -1,0 +1,162 @@
+<main id="inmueble">
+    <div class="container mb-5">
+        <div class="mt-4 pt-5">
+            <div class="mb-5">
+                <h1 class="font-poppins font-medium text-[26px] text-gray-800">
+                    Venta Bello Duplex Tudela y Valera
+                </h1>
+
+                <div id="app" class="mb-3">
+                    <div class="position-relative">
+                        <a class="main-title" [href]="mapLink">
+                            Lima - <span class="hover-geo-card" [style.color]="'#d89733'">{{ location }}</span>, Lima
+                            Metropolitana
+                            <div class="icon-circle-container">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="photo-container" data-baguetteBox="gallery">
+                    <!-- <div class="photo-cover" *ngFor="let image of images; let i = index">
+                        <div class="card" [ngClass]="'photo-cover-' + (i + 1)">
+                            <a [href]="image">
+                                <img [src]="image" alt="Property Image" class="img-fluid" />
+                            </a>
+                        </div>
+                    </div> -->
+                    <div class="photo-cover">
+                        <div class="card photo-cover-1">
+                            <a [href]="images[0]">
+                                <img [src]="images[0]" alt="" class="img-fluid" />
+                            </a>
+                        </div>
+                        <div class="card photo-cover-2">
+                            <a [href]="images[1]">
+                                <img [src]="images[1]" alt="" class="" />
+                            </a>
+                        </div>
+                        <div class="card photo-cover-3">
+                            <a [href]="images[2]">
+                                <img [src]="images[2]" alt="" class="" />
+                            </a>
+                        </div>
+                        <div class="card photo-cover-4">
+                            <a [href]="images[3]">
+                                <img [src]="images[3]" alt="" class="" />
+                            </a>
+                        </div>
+                        <div class="card photo-cover-5">
+                            <a [href]="images[4]">
+                                <img [src]="images[4]" alt="" class="" />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="my-4">
+                            <h3>Descripción</h3>
+                            <p [innerHTML]="description" class="description text-justify"></p>
+                            <button id="showMoreBtn" class="btn-text-control" (click)="toggleText()">{{ showMoreText
+                                }}</button>
+                        </div>
+
+                        <div class="text-center text-xl">
+                            Desde: <span class="font-weight-bold">{{ price }}</span> - $1000
+                        </div>
+
+                        <div class="mt-4">
+                            <hr class="mb-4" />
+                            <div class="mt-4 row">
+                                <div class="col-12 col-lg-6" *ngFor="let feature of features">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i [class]="feature.icon" class="mr-2"></i>
+                                        <span class="text-decoration-line-through">{{ feature.name }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <hr class="mb-4" />
+                            <p class="h4">Superficie</p>
+                            <div class="mt-4 row">
+                                <div class="col-12 col-lg-6">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-ruler-combined mr-2"></i>
+                                        <span class="text-decoration-line-through">Área total: {{ totalArea }} m2</span>
+                                    </div>
+                                </div>
+                                <div class="col-12 col-lg-6">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-ruler-combined fa-flip-vertical mr-2"></i>
+                                        <span class="text-decoration-line-through">Área construida: {{ builtArea }}
+                                            m2</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-4">
+                            <h2 class="text-2xl font-semibold">Información extra</h2>
+                            <div class="text-justify">{{ extraInfo }}</div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="card rounded-lg shadow-lg bg-white">
+                            <div class="card-body">
+                                <div class="text-center mb-3">
+                                    <h3 class="card-title">Contacta al anunciante</h3>
+                                    <h4 class="card-title">{{ advertiser.name }}</h4>
+                                    <p class="card-text btn-telefono">
+                                        <i class="fas fa-phone-alt mr-2"></i>
+                                        <span (click)="togglePhoneNumber()">
+                                            {{ isVisible ? phoneNumber : 'Ver Telefono' }}
+                                        </span>
+                                    </p>
+                                </div>
+
+                                <div class="border px-3 pt-3 mb-3">
+                                    <div class="input-field">
+                                        <input [(ngModel)]="email" required autocomplete="off" type="email"
+                                            id="email" />
+                                        <label for="email">Correo Electrónico</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input [(ngModel)]="name" required autocomplete="off" type="text"
+                                            id="nombres" />
+                                        <label for="nombres">Nombre</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <input [(ngModel)]="phone" required autocomplete="off" type="text"
+                                            id="telefono" />
+                                        <label for="telefono">Teléfono</label>
+                                    </div>
+                                    <div class="input-field">
+                                        <textarea [(ngModel)]="message" required autocomplete="off"
+                                            id="mensaje"></textarea>
+                                        <label for="mensaje">Mensaje</label>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex">
+                                    <button type="button"
+                                        class="btn btn-primary btn-lg btn-block mx-2">Contactar</button>
+                                    <a href="https://wa.me/{{ advertiser.whatsapp }}" class="whatsapp-link">
+                                        <i class="fab fa-whatsapp fa-2x"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

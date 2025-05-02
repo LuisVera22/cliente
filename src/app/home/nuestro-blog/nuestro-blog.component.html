@@ -1,1 +1,9 @@
-<p>nuestro-blog works!</p>
+<div class="mb-5 mt-5">
+    <h2 class="text-center mb-4">Nuestro Blog</h2>
+    <hr>
+    <div class="row">
+        <div class="col-lg-4" *ngFor="let blog of blogs">
+            <app-blog-card [blog]="blog"></app-blog-card>
+        </div>
+    </div>
+</div>

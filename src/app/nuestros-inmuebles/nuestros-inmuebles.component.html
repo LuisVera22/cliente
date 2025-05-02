@@ -1,0 +1,126 @@
+<main id="nuestros-inmuebles">
+    <div class="parallax">
+        <div class="parallax-cuerpo">
+            <div id="titulo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-white">
+                            <h1>Propiedades e inmuebles</h1>
+                            <h3>Resultados encontrados: {{properties.length}}</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mb-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="d-flex justify-content-between mb-4">
+                    <div class="view-options">
+                        <button class="btn btn-primary active">
+                            <i class="fas fa-list"></i> Listado
+                        </button>
+                        <button class="btn btn-outline-secondary" (click)="toggleView()">
+                            <i class="fas" [ngClass]="isGridView ? 'fa-th' : 'fa-th-list'"></i>
+                            {{ isGridView ? 'Cuadrícula' : 'Vista' }}
+                        </button>
+                    </div>
+                    <form class="form-inline">
+                        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Ordenar por:</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                            <option>Por defecto</option>
+                            <option>Mayor precio</option>
+                            <option>Menor precio</option>
+                            <option>Más recientes</option>
+                        </select>
+                    </form>
+                </div>
+
+                <!-- Aquí es donde implementamos ngClass para manejar el cambio de vista -->
+                <div class="row" [ngClass]="{'flex-column': !isGridView, 'row': isGridView}" id="propertyCards">
+                    <div class="col" *ngFor="let property of properties">
+                        <app-inmueble-card [property]="property"></app-inmueble-card>
+                    </div>
+                </div>
+
+                <hr>
+
+                <nav aria-label="">
+                    <ul class="pagination">
+                        <li class=""><a class="page-link" href="#">&laquo;</a></li>
+                        <li class="page-item "><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="col-lg-4">
+                <aside class="property-sidebar">
+                    <div class="shadow px-4 py-5 bg-white rounded">
+                        <div class="filter-group mb-4">
+                            <h5 class="d-flex"><i class="fas fa-filter"></i> Filtros aplicados</h5>
+                            <div class="filter-tags">
+                                <span class="badge bg-light text-dark mb-2">Locales Comerciales <i
+                                        class="fas fa-times ms-1"></i></span>
+                                <span class="badge bg-light text-dark mb-2">Venta <i
+                                        class="fas fa-times ms-1"></i></span>
+                            </div>
+                        </div>
+
+                        <div class="filter-group mb-4">
+                            <h5><i class="fas fa-map-marked-alt"></i> Departamentos</h5>
+                            <ul class="filter-list">
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">Lima <span
+                                            class="count">35</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">Callao <span
+                                            class="count">3</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">La Libertad <span
+                                            class="count">2</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">Ica <span
+                                            class="count">1</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">Ver todos</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-group mb-4">
+                            <h5><i class="fas fa-bed"></i> Dormitorios</h5>
+                            <ul class="filter-list">
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">1 <span
+                                            class="count">12</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">2 <span
+                                            class="count">8</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">3+ <span
+                                            class="count">5</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-group mb-4">
+                            <h5><i class="fas fa-bath"></i> Baños</h5>
+                            <ul class="filter-list">
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">1 <span
+                                            class="count">10</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">2 <span
+                                            class="count">7</span></a></li>
+                                <li class="mb-2"><a href="#" class="d-flex justify-content-between">3+ <span
+                                            class="count">8</span></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="filter-group mb-4">
+                            <h5><i class="fas fa-tags"></i> Precio</h5>
+                            <div class="price-range">
+                                <input type="number" placeholder="Mínimo ($)">
+                                <input type="number" placeholder="Máximo ($)">
+                                <button class="btn btn-primary w-100 mt-2">Aplicar</button>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</main>

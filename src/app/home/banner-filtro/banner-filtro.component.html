@@ -1,19 +1,19 @@
 <div class="container-fluid search-section mb-5">
     <div class="container">
         <div class="slogan-banner text-center">
-            <h3>PUBLICA, CONECTA,</h3>
+            <h3 data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">PUBLICA, CONECTA,</h3>
             <div class="title">
-                <div class="letter">C</div>
-                <div class="letter">E</div>
-                <div class="letter">L</div>
-                <div class="letter">E</div>
-                <div class="letter">B</div>
-                <div class="letter">R</div>
-                <div class="letter">A</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="100" data-aos-duration="700">C</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="150" data-aos-duration="750">E</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="200" data-aos-duration="800">L</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="250" data-aos-duration="850">E</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="300" data-aos-duration="900">B</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="350" data-aos-duration="950">R</div>
+                <div class="letter" data-aos="fade-down" data-aos-delay="400" data-aos-duration="1000">A</div>
             </div>
         </div>
 
-        <div class="button-group">
+        <div class="button-group" data-aos="fade-up" data-aos-delay="700" data-aos-duration="1000">
             <button [ngClass]="{ active: selectedButton === 'social' }" (click)="selectButton('social')">
                 Social
             </button>
@@ -22,15 +22,15 @@
             </button>
         </div>
 
-        <div class="search-container">
+        <div class="search-container" data-aos="fade-down" data-aos-delay="600" data-aos-duration="1000">
             <div class="search-box">
                 <select>
                     <option>Bodas</option>
                     <option>Fiestas</option>
                     <option>Celebraciones</option>
                 </select>
-                <input type="text" placeholder="Busca por ubicación" />
-                <button><i class="fas fa-search"></i></button>
+                <input type="text" placeholder="Busca por ubicación"/>
+                <button routerLink="/nuestros-inmuebles"><i class="fas fa-search"></i></button>
             </div>
         </div>
     </div>

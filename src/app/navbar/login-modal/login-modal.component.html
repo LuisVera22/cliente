@@ -1,21 +1,55 @@
 <div id="login-form" class="custom-login-form">
     <div class="custom-form-container">
-        <h1>Proyecto Hogar</h1>
+        <h1>Salon Peru</h1>
         <a href="#" class="custom-back-link" id="close-btn" (click)="closeModal()">
             <i class="fas fa-arrow-left"></i> Atrás
         </a>
         <h3>¡Hola!</h3>
         <p class="custom-description">
-            Ingresa a tu cuenta y accede a los avisos que contactaste, tus favoritos, las búsquedas guardadas ¡y más!
+            Ingresa a tu cuenta y publica tus salones, recibe ofertas ¡y más!
         </p>
 
-        <p>Ingresa tu email</p>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="custom-form-group">
+                <label>Ingresa tus credenciales</label>
+                <input type="email" formControlName="email" placeholder="Email" required />
+                <div *ngIf="loginForm.get('email')?.invalid && (loginForm.get('email')?.dirty || loginForm.get('email')?.touched)"
+                    class="text-danger">
+                    <small *ngIf="loginForm.get('email')?.errors?.['required']">
+                        El email es requerido
+                    </small>
+                    <small *ngIf="loginForm.get('email')?.errors?.['email']">
+                        Ingrese un email válido
+                    </small>
+                </div>
+            </div>
 
-        <div class="custom-form-group">
-            <input type="email" id="email" placeholder="Email">
-        </div>
+            <div class="custom-form-group">
+                <label>Contraseña</label>
+                <input type="password" formControlName="password" placeholder="Contraseña" required />
+                <div *ngIf="loginForm.get('password')?.invalid && (loginForm.get('password')?.dirty || loginForm.get('password')?.touched)"
+                    class="text-danger">
+                    <small *ngIf="loginForm.get('password')?.errors?.['required']">
+                        La contraseña es requerida
+                    </small>
+                    <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+                        Mínimo 6 caracteres
+                    </small>
+                </div>
+            </div>
 
-        <button class="custom-continue-btn">Continuar</button>
+            <!-- Mensaje de error -->
+            <div *ngIf="errorMessage" class="error-message">
+                <p>{{ errorMessage }}</p>
+            </div>
+
+            <button type="submit" class="custom-continue-btn" [disabled]="loginForm.invalid || isLoading">
+                <span *ngIf="!isLoading">Ingresar</span>
+                <span *ngIf="isLoading">
+                    Cargando <span class="spinner"></span>
+                </span>
+            </button>
+        </form>
 
         <div class="custom-register-link">
             <p>¿No tienes cuenta?<br>

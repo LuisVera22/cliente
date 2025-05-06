@@ -1,86 +1,62 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { Component, ElementRef, Inject, OnInit, PLATFORM_ID, Renderer2, ViewChild } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @Component({
   selector: 'app-navbar',
-  imports: [CommonModule,LoginModalComponent, RouterLink],
+  imports: [
+    CommonModule,
+    LoginModalComponent,
+    RouterLink
+  ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent implements OnInit {
-  // Elementos del DOM
-  @ViewChild('navbarToggler', { static: false }) navbarToggler!: ElementRef;
-  @ViewChild('navbarCollapse', { static: false }) navbarCollapse!: ElementRef;
-  @ViewChild('closeBtn', { static: false }) closeBtn!: ElementRef;
-  @ViewChild('header', { static: false }) header!: ElementRef;
-
-  isModalVisible: boolean = false;
-
-  constructor(
-    private renderer: Renderer2,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+export class NavbarComponent {
+  @ViewChild('navbarCollapse') navbarCollapse!: ElementRef;
+  @ViewChild(LoginModalComponent) loginModal!: LoginModalComponent;
+  
+  isScrolled = false;
+  isLoginModalVisible = false;
+  isLogged = false;
 
   ngOnInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.addScrollListener();
-    }
+    this.isLogged = !!localStorage.getItem('user');
   }
 
-  ngAfterViewInit(): void {
-    if (isPlatformBrowser(this.platformId)) {
-      this.addNavbarTogglerListener();
-    }
-  }
-
-  // Listener para scroll
-  addScrollListener(): void {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 10) {
-        this.renderer.addClass(this.header.nativeElement, 'scrolled');
-      } else {
-        this.renderer.removeClass(this.header.nativeElement, 'scrolled');
-      }
-    });
-  }
-
-  // Navbar toggler
-  addNavbarTogglerListener(): void {
-    if (this.navbarToggler && this.navbarCollapse) {
-      this.renderer.listen(this.navbarToggler.nativeElement, 'click', () => {
-        this.toggleNavbar();
-      });
-    }
-
-    if (this.closeBtn && this.navbarCollapse) {
-      this.renderer.listen(this.closeBtn.nativeElement, 'click', () => {
-        this.closeNavbar();
-      });
-    }
+  @HostListener('window:scroll')
+  onScroll() {
+    this.isScrolled = window.scrollY > 10;
   }
 
   toggleNavbar(): void {
-    const collapseEl = this.navbarCollapse.nativeElement;
-    if (collapseEl.classList.contains('show')) {
-      this.renderer.removeClass(collapseEl, 'show');
-    } else {
-      this.renderer.addClass(collapseEl, 'show');
+    const el = this.navbarCollapse?.nativeElement;
+    if (el) {
+      el.classList.toggle('show');
     }
   }
 
   closeNavbar(): void {
-    if (this.navbarCollapse) {
-      this.renderer.removeClass(this.navbarCollapse.nativeElement, 'show');
+    const el = this.navbarCollapse?.nativeElement;
+    if (el) {
+      el.classList.remove('show');
     }
   }
 
-  openModal(): void {
-    this.isModalVisible = true;
+  openLoginModal(): void {
+    this.isLoginModalVisible = true;
   }
 
-  closeModal(): void {
-    this.isModalVisible = false;
+  onLoginModalClose(): void {
+    this.isLoginModalVisible = false;
+  }
+
+  logout(): void {
+    this.isLogged = false;
+    localStorage.removeItem('user');
+    this.closeNavbar();
+    
+    console.log('Sesión cerrada');
   }
 }

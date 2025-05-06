@@ -1,48 +1,100 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ActivatedRoute } from '@angular/router';
+import { SalonDTO } from '../models/dto/salon-dto/salon-dto';
+import { SalonService } from '../service/salon/salon.service';
 
 @Component({
   selector: 'app-inmueble',
-  imports: [CommonModule, FormsModule, FontAwesomeModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './inmueble.component.html',
   styleUrl: './inmueble.component.css'
 })
-export class InmuebleComponent {
+export class InmuebleComponent{
+
+  idPropiedad!: number;
+  salon?: SalonDTO;
+
+  // Inicialización de variables
   mapLink = "https://www.google.com/maps";
-  location = "Miraflores";
-  images = [
-    '/assets/img/propiedades.png',
-    '/assets/img/propiedades.png',
-    '/assets/img/propiedades.png',
-    '/assets/img/propiedades.png',
-    '/assets/img/propiedades.png'
-  ];
-  description = "Ménage - By The Beas, A colonial style hill cottage near Manali, this delightful vacation home promises the perfect mix of hills with a scenic river side in the privacy of your own space...";
+  images: string[] = [];
   showMoreText = "Mostrar más";
-  price = "S/3644.50";
-  features = [
-    { icon: 'fas fa-wifi', name: 'Wifi' },
-    { icon: 'fas fa-tv', name: 'TV' },
-    { icon: 'fas fa-car', name: 'Área de estacionamiento' },
-    { icon: 'fas fa-fire-extinguisher', name: 'Detector de fuego' },
-    { icon: 'fas fa-door-closed', name: 'Entrada privada' }
-  ];
-  totalArea = 500;
-  builtArea = 355;
   extraInfo = "- Check-in time is 1pm & Check-out time is 10 am...";
-  advertiser = {
-    name: "Susana López-Ameri Cáceres",
-    whatsapp: "+51935718768"
-  };
+  advertiser = { name: '', whatsapp: '' };
   email = '';
   name = '';
   phone = '';
   message = '';
-  phoneNumber = '+51 987 654 321';
+  phoneNumber = '';
+  location = '';
+  description = '';
+  price = '';
+  capacidadMax = 0;
 
-  toggleText() {
+  // Para mostrar u ocultar el número de teléfono
+  isVisible = false;
+
+  constructor(private route: ActivatedRoute, private salonService: SalonService) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      if (params['id']) {
+        this.idPropiedad = +params['id']; // Convertimos a número
+        console.log('ID de la propiedad recibido:', this.idPropiedad);
+        this.loadSalon();
+      }
+    });
+  }
+
+  loadSalon(): void {
+    this.salonService.obtenerSalonPorId(this.idPropiedad).subscribe({
+      next: (data) => {
+        this.salon = data;
+        console.log(data);
+        
+        this.processImages();
+        
+        // Inicializar las variables con los valores de 'salon'
+        if (this.salon) {
+          this.location = this.salon.direccion;
+          this.description = this.salon.descripcion;
+          this.price = `S/. ${this.salon.precio}`;
+          this.capacidadMax = this.salon.capacidad;
+          this.advertiser = {
+            name: this.salon.nombre,
+            whatsapp: this.salon.telefono
+          };
+          this.phoneNumber = `+51 ${this.salon.telefono}`;
+        }
+      },
+      error: (err) => console.error('Error loading salon:', err)
+    });
+  }
+
+  // Procesar las imágenes
+  processImages(): void {
+    const defaultImage = 'assets/img/no-image.png';
+    const maxImages = 5;
+
+    let processedImages: string[] = [];
+
+    for (let i = 0; i < maxImages; i++) {
+      let imagePath = this.salon?.imagenes[i] || '';
+
+      if (!imagePath || imagePath.trim() === '') {
+        processedImages.push(defaultImage);
+      } else {
+        processedImages.push(imagePath);
+      }
+    }
+
+    // Asignamos las imágenes procesadas
+    this.images = processedImages;
+    console.log('Imágenes procesadas:', this.images);
+  }
+
+  toggleText(): void {
     if (this.showMoreText === "Mostrar más") {
       this.showMoreText = "Mostrar menos";
     } else {
@@ -50,8 +102,7 @@ export class InmuebleComponent {
     }
   }
 
-  isVisible = false;
-  togglePhoneNumber() {
+  togglePhoneNumber(): void {
     this.isVisible = !this.isVisible;
   }
 }

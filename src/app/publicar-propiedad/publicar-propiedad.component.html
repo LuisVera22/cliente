@@ -1,0 +1,129 @@
+<main id="alquiler_venta">
+    <div class="parallax">
+        <div class="parallax-cuerpo">
+            <div id="titulo">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-white">
+                            <h1>Publicar un inmueble</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form class="formulario" id="frmPropiedades" method="post" enctype="multipart/form-data"
+            (ngSubmit)="onSubmit()">
+            <section class="mb-5">
+                <h3>Datos Básicos del Inmueble</h3>
+                <hr>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="textNombre">Nombre:</label>
+                            <input class="form-control" type="text" name="textNombre" id="textNombre"
+                                [(ngModel)]="formData.nombre" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="textCapacidad">Capacidad máxima:</label>
+                            <input class="form-control number_pro" type="number" min="1" step="any" name="textCapacidad"
+                                id="textCapacidad" [(ngModel)]="formData.capacidad" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="textPrecioMin">Precio en Soles Peruanos:</label>
+                            <input class="form-control number_pro" type="number" min="1" step="any" name="textPrecioMin"
+                                id="textPrecioMin" [(ngModel)]="formData.precioBase" required>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Tipos de Evento</p>
+                        <div class="row justify-content-center">
+                            <!-- Iterar sobre tipos de evento -->
+                            <div class="form-check form-check-inline" *ngFor="let tipo of tiposEvento">
+                                <input class="form-check-input" type="checkbox" [id]="'check' + tipo.id"
+                                    [name]="'check' + tipo.id" [value]="tipo" (change)="onTipoEventoChange(tipo)"
+                                    [checked]="formData.tiposEvento.includes(tipo)">
+                                <label class="form-check-label" [for]="'check' + tipo.id">{{ tipo.nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <p>Otras Características</p>
+                        <div class="row justify-content-center">
+                            <!-- Iterar sobre características de salón -->
+                            <div class="form-check form-check-inline"
+                                *ngFor="let caracteristica of caracteristicasSalon">
+                                <input class="form-check-input" type="checkbox" [id]="'check' + caracteristica.id"
+                                    [name]="'check' + caracteristica.id" [value]="caracteristica"
+                                    (change)="onCaracteristicaChange(caracteristica)"
+                                    [checked]="formData.caracteristicas.includes(caracteristica)">
+                                <label class="form-check-label" [for]="'check' + caracteristica.id">{{
+                                    caracteristica.nombre }}</label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <section class="mb-5">
+                <h3>Ubicación del Inmueble</h3>
+                <hr>
+                <p>Indique los distritos donde quiere que busquemos su propiedad.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="textDireccion">Dirección:</label>
+                            <input class="form-control" type="text" name="textDireccion" id="textDireccion"
+                                [(ngModel)]="formData.direccion" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="selectDepartamento">Departamento:</label>
+                            <select class="form-control" id="selectDepartamento" required>
+                                <option value="">Elige un departamento</option>
+                                <option *ngFor="let region of regiones" [value]="region.id" [(ngModel)]="formData.region.id">
+                                    {{ region.departamento + "-" + region.nombre }}
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mb-5">
+                <h3>Descripción del Inmueble</h3>
+                <hr>
+                <p>Ingrese aquí cualquier otro dato, comentario o inquietud que no haya sido previamente cubierto en
+                    este formulario</p>
+                <div class="form-group">
+                    <textarea class="form-control" name="textComentarios" id="textComentarios" rows="5"
+                        [(ngModel)]="formData.descripcion" required></textarea>
+                </div>
+            </section>
+            <section class="mb-5">
+                <h3>Imágenes del Inmueble</h3>
+                <hr>
+                <p>Agregue imágenes del inmueble (mínimo 5 imágenes).</p>
+                <p-fileUpload #fileUpload name="file[]" accept="image/*" maxFileSize="300000000"
+                    (onSelect)="onFileSelect($event)" [showUploadButton]="false" [showCancelButton]="false"
+                    chooseLabel="Cargar Imagen" [multiple]="true">
+                </p-fileUpload>
+                <p *ngIf="imageError" style="color: red;">Debe seleccionar al menos 5 imágenes.</p>
+            </section>
+            <div class="my-3">
+                <button type="submit" class="btn btn-primary btn-lg mb-4" id="EnviarPro"
+                    style="border:none;align-items: center;">
+                    <span class="spinner-border spinner-border-sm" id="spinnerC" role="status" aria-hidden="true"
+                        style="width: 1.4rem;height: 1.4rem;margin-right: 8px;display: none;"></span>
+                    Enviar Datos<i class="fa fa-arrow-circle-right ml-3"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+</main>

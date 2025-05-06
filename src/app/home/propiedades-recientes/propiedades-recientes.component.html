@@ -1,50 +1,50 @@
-<section id="new-properties-section" class="mb-5 mt-5">
-    <h2 class="text-center mb-4">Propiedades Recientes</h2>
+<section id="new-salones-section" class="mb-5 mt-5">
+    <h2 class="text-center mb-4">Nuestros Salones</h2>
     <hr>
     
     <!-- Versión para pantallas grandes - 3 cards -->
     <div class="desktop-carousel">
-        <div id="propertyCarousel" class="carousel slide" data-ride="carousel">
+        <div id="salonCarousel" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let group of groupedProperties; let i = index" [class.active]="i === 0">
+                <div class="carousel-item" *ngFor="let group of groupedSalones; let i = index" [class.active]="i === 0">
                     <div class="row">
-                        <div class="col-lg-4" *ngFor="let property of group">
-                            <app-inmueble-card [property]="property"></app-inmueble-card>
+                        <div class="col-lg-4" *ngFor="let salon of group">
+                            <app-inmueble-card [salon]="salon"></app-inmueble-card>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <a class="carousel-control-prev" href="#propertyCarousel" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#salonCarousel" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#propertyCarousel" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#salonCarousel" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a> -->
+            </a>
         </div>
     </div>
     
     <!-- Versión unificada para móviles - 1 card -->
     <div class="mobile-carousel">
-        <div id="propertyCarouselMobile" class="carousel slide" data-ride="carousel">
+        <div id="salonCarouselMobile" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item" *ngFor="let property of properties; let i = index" [class.active]="i === 0">
+                <div class="carousel-item" *ngFor="let salon of salones; let i = index" [class.active]="i === 0">
                     <div class="row justify-content-center">
                         <div class="col-10 col-md-8">
-                            <app-inmueble-card [property]="property"></app-inmueble-card>
+                            <app-inmueble-card [salon]="salon"></app-inmueble-card>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- <a class="carousel-control-prev" href="#propertyCarouselMobile" role="button" data-slide="prev">
+            <a class="carousel-control-prev" href="#salonCarouselMobile" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="sr-only">Previous</span>
             </a>
-            <a class="carousel-control-next" href="#propertyCarouselMobile" role="button" data-slide="next">
+            <a class="carousel-control-next" href="#salonCarouselMobile" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-            </a> -->
+            </a>
         </div>
     </div>
 </section>

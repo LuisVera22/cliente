@@ -6,7 +6,7 @@
                     <div class="row">
                         <div class="col-12 text-white">
                             <h1>Propiedades e inmuebles</h1>
-                            <h3>Resultados encontrados: {{properties.length}}</h3>
+                            <h3>Resultados encontrados: {{salones.length}}</h3>
                         </div>
                     </div>
                 </div>
@@ -40,8 +40,8 @@
 
                 <!-- Aquí es donde implementamos ngClass para manejar el cambio de vista -->
                 <div class="row" [ngClass]="{'flex-column': !isGridView, 'row': isGridView}" id="propertyCards">
-                    <div class="col" *ngFor="let property of properties">
-                        <app-inmueble-card [property]="property"></app-inmueble-card>
+                    <div class="col" *ngFor="let salon of salones">
+                        <app-inmueble-card [salon]="salon"></app-inmueble-card>
                     </div>
                 </div>
 
@@ -64,15 +64,15 @@
                         <div class="filter-group mb-4">
                             <h5 class="d-flex"><i class="fas fa-filter"></i> Filtros aplicados</h5>
                             <div class="filter-tags">
-                                <span class="badge bg-light text-dark mb-2">Locales Comerciales <i
+                                <span class="badge bg-light text-dark mb-2">AAAA AAAAA <i
                                         class="fas fa-times ms-1"></i></span>
-                                <span class="badge bg-light text-dark mb-2">Venta <i
+                                <span class="badge bg-light text-dark mb-2">AAAA <i
                                         class="fas fa-times ms-1"></i></span>
                             </div>
                         </div>
 
                         <div class="filter-group mb-4">
-                            <h5><i class="fas fa-map-marked-alt"></i> Departamentos</h5>
+                            <h5><i class="fas fa-map-marked-alt"></i> AAAAA</h5>
                             <ul class="filter-list">
                                 <li class="mb-2"><a href="#" class="d-flex justify-content-between">Lima <span
                                             class="count">35</span></a></li>
@@ -87,7 +87,7 @@
                         </div>
 
                         <div class="filter-group mb-4">
-                            <h5><i class="fas fa-bed"></i> Dormitorios</h5>
+                            <h5><i class="fas fa-bed"></i> AAAA</h5>
                             <ul class="filter-list">
                                 <li class="mb-2"><a href="#" class="d-flex justify-content-between">1 <span
                                             class="count">12</span></a></li>
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="filter-group mb-4">
-                            <h5><i class="fas fa-bath"></i> Baños</h5>
+                            <h5><i class="fas fa-bath"></i> AAAA</h5>
                             <ul class="filter-list">
                                 <li class="mb-2"><a href="#" class="d-flex justify-content-between">1 <span
                                             class="count">10</span></a></li>
